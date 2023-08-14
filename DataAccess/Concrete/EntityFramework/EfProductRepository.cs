@@ -1,5 +1,6 @@
 ﻿using Core.DataAccess;
 using Core.DataAccess.EntityFramework;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfProductRepository : EfEntityRepositoryBase<Product, ProjectContext>, IEntityRepository<Product>
+    public class EfProductRepository : EfEntityRepositoryBase<Product, ProjectContext>, IProductRepository
     {
     }
 }

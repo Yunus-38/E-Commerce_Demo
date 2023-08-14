@@ -11,7 +11,7 @@ namespace Core.Entities.Concrete
         public int Id { get; set; }
         public Entity()
         {
-            Id = Id + 1;
+            Id = Id++;
         }
     }
 }
