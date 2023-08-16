@@ -1,8 +1,10 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspect.Autofac;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +34,7 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        [SecuredOperation("admin")]
         public IDataResult<IEnumerable<Product>> GetAll()
         {
             return new SuccessDataResult<IEnumerable<Product>>(_productRepository.GetAll());
@@ -40,6 +43,11 @@ namespace Business.Concrete
         public IDataResult<Product> GetById(int id)
         {
             return new SuccessDataResult<Product>(_productRepository.Get(c => c.Id == id));
+        }
+
+        public IDataResult<List<ProductDetailsDto>> GetProductDetails()
+        {
+            return new SuccessDataResult<List<ProductDetailsDto>>(_productRepository.GetProductDetails());
         }
 
         public IResult Update(Product entity)
