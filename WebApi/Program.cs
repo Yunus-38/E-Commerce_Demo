@@ -40,6 +40,8 @@ builder.Services.AddDependencyResolvers(new ICoreModule[] {
                 new CoreModule()
             });
 
+builder.Services.AddHttpContextAccessor();
+
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

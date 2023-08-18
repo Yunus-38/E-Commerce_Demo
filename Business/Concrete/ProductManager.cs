@@ -34,7 +34,7 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        [SecuredOperation("admin")]
+        [SecuredOperation("products.get")]
         public IDataResult<IEnumerable<Product>> GetAll()
         {
             return new SuccessDataResult<IEnumerable<Product>>(_productRepository.GetAll());
