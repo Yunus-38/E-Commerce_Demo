@@ -30,16 +30,8 @@ namespace Business.BusinessAspect.Autofac
             //var roleClaims = _httpContextAccessor.HttpContext.User.ClaimRoles();
 
             //This is the roundabout method I used to manually access the claims. I will probably write a method for all this later.
-            _httpContextAccessor.HttpContext.Request.Headers.TryGetValue("Authorization", out StringValues jwt);
-            string jwtString = jwt.ToString().Substring(7);
-            var jwtHandler = new JwtSecurityTokenHandler();
-            var jwtClaims = jwtHandler.ReadJwtToken(jwtString).Payload.Claims;
-            var jwtRoleClaims = jwtClaims.Where<Claim>(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role");
-            List<string> roleClaims = new();
-            foreach (var item in jwtRoleClaims)
-            {
-                roleClaims.Add(item.Value);
-            }
+
+            List<string> roleClaims = _httpContextAccessor.GetRoleClaims();
             foreach (var role in _roles)
             {
                 if (roleClaims.Contains(role))
