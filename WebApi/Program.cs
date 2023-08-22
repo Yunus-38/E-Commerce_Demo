@@ -15,6 +15,8 @@ using Core.Utilities.Security.Encryption;
 using Business.DependencyResolvers.Autofac;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Core.CrossCuttingConcerns.Caching;
+using Core.CrossCuttingConcerns.Caching.Microsoft;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +31,7 @@ builder.Services.AddSingleton<IProductService, ProductManager>();
 builder.Services.AddSingleton<IProductRepository, EfProductRepository>();
 
 builder.Services.AddSingleton<IMapper, Mapper>();
-
+builder.Services.AddSingleton<ICacheManager, MemoryCacheManager>();
 builder.Services.AddSingleton<ITokenHelper, JwtHelper>();
 
 builder.Services.AddSingleton<IUserRepository, EfUserRepository>();
