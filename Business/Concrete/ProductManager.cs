@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspect.Autofac;
 using Core.Aspects.Caching;
+using Core.Utilities.BusinessWork;
 using Core.Utilities.Mapping.Abstract;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -19,11 +20,14 @@ namespace Business.Concrete
     {
         IProductRepository _productRepository;
         IMapper _mapper;
+        IBusinessRules<Product,IProductService> _businessRules;
 
-        public ProductManager(IProductRepository productDal, IMapper mapper)
+        public ProductManager(IProductRepository productDal, IMapper mapper, IBusinessRules<Product, IProductService> businessRules)
         {
             _productRepository = productDal;
             _mapper = mapper;
+            _businessRules = businessRules;
+            _businessRules.Manager = this;
         }
 
         public IResult Add(Product entity)
@@ -35,6 +39,11 @@ namespace Business.Concrete
         public IResult AddWithDto(AddProductDto addProductDto)
         {
             Product product = _mapper.Map<AddProductDto, Product>(addProductDto);
+            var ruleCheck = _businessRules.Run(product, "AddWithDto");
+            if (!ruleCheck.Success)
+            {
+                return ruleCheck;
+            }
             _productRepository.Add(product);
             return new SuccessResult();
         }
