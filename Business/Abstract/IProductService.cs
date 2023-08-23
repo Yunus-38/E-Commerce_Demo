@@ -13,5 +13,6 @@ namespace Business.Abstract
     public interface IProductService : IEntityService<Product>
     {
         public IDataResult<List<ProductDetailsDto>> GetProductDetails();
+        public IResult AddWithDto(AddProductDto addProductDto);
     }
 }

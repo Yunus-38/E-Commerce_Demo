@@ -1,21 +1,17 @@
-﻿using Core.Entities.Concrete;
+﻿using Core.Entities.Abstract;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete
+namespace Entities.DTOs
 {
-    public class Product : Entity
+    public class AddProductDto : IDto
     {
         public int CategoryId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public DateTime AddedDate { get; set; } = DateTime.Now;
-        public int DiscountPercentage { get; set; } = 0;
-        public bool Available { get; set; } = true;
     }
 }
