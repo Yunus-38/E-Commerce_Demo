@@ -22,6 +22,8 @@ namespace Core.Utilities.Mapping.Concrete
         public MapSettings AddConfiguration<TSouce, TTarget>()
         {
             MapSettings mapSettings = new(typeof(TSouce), typeof(TTarget));
+            mapSettings.AddDefaultMapSettings<TSouce,TTarget>();
+            mapSettings.Configurations = this;
             Configuration.Add(mapSettings);
             return mapSettings;
         }

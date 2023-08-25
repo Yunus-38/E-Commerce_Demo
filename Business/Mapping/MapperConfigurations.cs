@@ -14,11 +14,7 @@ namespace Business.Mapping
     {
         public override void Configure()
         {
-            AddConfiguration<AddProductDto, Product>()
-                .MapProperty("CategoryId", "CategoryId")
-                .MapProperty("Name", "Name")
-                .MapProperty("Description", "Description")
-                .MapProperty("Price", "Price");
+            AddConfiguration<AddProductDto, Product>().ReverseMap();
 
             base.Configure();
         }
