@@ -45,8 +45,6 @@ namespace Business.Concrete
                 return ruleCheck;
             }
 
-            AddProductDto dummyDto = _mapper.Map<Product,AddProductDto>(product);
-
             _productRepository.Add(product);
             return new SuccessResult();
         }

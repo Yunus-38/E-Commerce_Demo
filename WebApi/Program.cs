@@ -28,17 +28,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IProductService, ProductManager>();
-builder.Services.AddSingleton<IProductRepository, EfProductRepository>();
 
-builder.Services.AddSingleton<IMapperConfigurations, MapperConfigurations>();
-builder.Services.AddSingleton<IMapper, Mapper>();
-builder.Services.AddSingleton<ICacheManager, MemoryCacheManager>();
-builder.Services.AddSingleton<ITokenHelper, JwtHelper>();
-
-builder.Services.AddSingleton<IUserRepository, EfUserRepository>();
-builder.Services.AddSingleton<IUserService, UserManager>();
-builder.Services.AddSingleton<IAuthService, AuthManager>();
 
 
 builder.Services.AddDependencyResolvers(new ICoreModule[] {
