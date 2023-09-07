@@ -10,9 +10,9 @@ namespace Core.Utilities.Mapping.Concrete
 {
     public class Mapper : IMapper
     {
-        IMapperConfigurations _configuration;
+        IMapperConfiguration _configuration;
 
-        public Mapper(IMapperConfigurations configuration)
+        public Mapper(IMapperConfiguration configuration)
         {
             _configuration = configuration;
         }

@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Core.Utilities.Mapping.Concrete
 {
-    public class BaseMapperConfigurations : IMapperConfigurations
+    public class MapperConfiguration : IMapperConfiguration
     {
         public List<MapSettings> Configuration { get; set; } = new List<MapSettings>();
-        public BaseMapperConfigurations()
+        public MapperConfiguration()
         {
             Configure();
         }

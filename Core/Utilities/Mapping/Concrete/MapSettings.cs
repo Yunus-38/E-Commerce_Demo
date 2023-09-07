@@ -21,7 +21,7 @@ namespace Core.Utilities.Mapping.Concrete
         public Type TargetType { get; private set; }
         public List<PropertyInfo> SourceProperties { get; private set; }
         public List<PropertyInfo> TargetProperties { get; private set; }
-        public BaseMapperConfigurations Configurations { get; set; }
+        public MapperConfiguration Configurations { get; set; }
 
         public MapSettings MapProperty(string sourceProperty, string targetProperty)
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core.Utilities.Mapping.Abstract
 {
-    public interface IMapperConfigurations
+    public interface IMapperConfiguration
     {
         public List<MapSettings> Configuration { get; set; }
         public void Configure();

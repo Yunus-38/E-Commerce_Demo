@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Business.Mapping
 {
-    public class MapperConfigurations : BaseMapperConfigurations
+    public class ProjectMapperConfiguration : MapperConfiguration
     {
         public override void Configure()
         {

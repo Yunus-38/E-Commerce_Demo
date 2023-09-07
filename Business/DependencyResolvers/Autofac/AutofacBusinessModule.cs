@@ -36,7 +36,7 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance();
 
-            builder.RegisterType<MapperConfigurations>().As<IMapperConfigurations>().SingleInstance();
+            builder.RegisterType<ProjectMapperConfiguration>().As<IMapperConfiguration>().SingleInstance();
             builder.RegisterType<MemoryCacheManager>().As<ICacheManager>().SingleInstance();
 
 
