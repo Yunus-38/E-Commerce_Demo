@@ -18,6 +18,7 @@ using Autofac.Extensions.DependencyInjection;
 using Core.CrossCuttingConcerns.Caching;
 using Core.CrossCuttingConcerns.Caching.Microsoft;
 using Business.Mapping;
+using Core.CrossCuttingConcerns.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 

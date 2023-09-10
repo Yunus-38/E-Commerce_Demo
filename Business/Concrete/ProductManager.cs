@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspect.Autofac;
 using Core.Aspects.Caching;
+using Core.CrossCuttingConcerns.Logging;
 using Core.Utilities.BusinessWork;
 using Core.Utilities.Mapping.Abstract;
 using Core.Utilities.Results;
@@ -36,6 +37,7 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        [LogAspect]
         public IResult AddWithDto(AddProductDto addProductDto)
         {
             Product product = _mapper.Map<AddProductDto, Product>(addProductDto);
