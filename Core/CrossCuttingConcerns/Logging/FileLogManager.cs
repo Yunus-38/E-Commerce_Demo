@@ -37,15 +37,20 @@ namespace Core.CrossCuttingConcerns.Logging
             string logPath;
             if (_logOptions.UseDefaultDirectory)
             {
-                logPath = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
+                logPath = Directory.GetParent(Directory.GetCurrentDirectory()).FullName + "\\Business\\Logs";
             }
             else
             {
-                logPath = _logOptions.LogDirectory;
+                logPath = _logOptions.LogDirectory + "\\Logs";
             }
             CurrentLog.Date = DateTime.Now;
             string log = JsonSerializer.Serialize(CurrentLog);
-            File.WriteAllText(logPath + "\\Logs\\log_" + CurrentLog.Date.DayOfYear + CurrentLog.Date.Hour + CurrentLog.Date.Minute + ".json", log);
+            bool directoryExists = Directory.Exists(logPath);
+            if (!directoryExists)
+            {
+                Directory.CreateDirectory(logPath);
+            }
+            File.WriteAllText(logPath + "\\log_" + CurrentLog.Date.ToString().Replace(':','.') + ".json", log);
         }
     }
 }
