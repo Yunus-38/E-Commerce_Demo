@@ -20,9 +20,21 @@ namespace Core.CrossCuttingConcerns.Logging
         }
         protected override void OnAfter(IInvocation invocation)
         {
+            List<string> parameterTypes = new();
+            foreach (var item in invocation.Method.GetParameters())
+            {
+                parameterTypes.Add(item.ParameterType.Name);
+            }
+            string methodName = invocation.Method.Name + "(";
+
+            foreach (var item in parameterTypes)
+            {
+                methodName = methodName + item + ",";
+            }
+            methodName = methodName + ")";
             Operation operation = new()
             {
-                MethodName = invocation.Method.Name,
+                MethodName = methodName,
                 Arguments = invocation.Arguments,
                 ReturnValue = invocation.ReturnValue,
                 Date = DateTime.Now
