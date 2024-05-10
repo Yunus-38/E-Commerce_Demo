@@ -57,13 +57,13 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        [CacheAspect]
+        //[CacheAspect]
         [SecuredOperation("admin,products.get")]
         public IDataResult<IEnumerable<Product>> GetAll()
         {
             return new SuccessDataResult<IEnumerable<Product>>(_productRepository.GetAll());
         }
-        [CacheAspect]
+        //[CacheAspect]
         public IDataResult<Product> GetById(int id)
         {
             return new SuccessDataResult<Product>(_productRepository.Get(c => c.Id == id));

@@ -5,8 +5,6 @@ using System.Text;
 
 namespace Core.Utilities.Interceptors
 {
-
-    //Tüm metotların çatısı. 
     public abstract partial class MethodInterception : MethodInterceptionBaseAttribute
     {
         protected virtual void OnBefore(IInvocation invocation) { }
